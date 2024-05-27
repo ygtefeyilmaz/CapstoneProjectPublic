@@ -1,0 +1,22 @@
+1,Crowdwork solutions,BE,4,IE,2,Ms Teacher1,Mr Teacher2
+2,Farming job improvement,EEE,3,IE,2,Ms Teacher3,Mr Teacher4
+3,Education Access Initiative,CE,1,IE,3,Ms Teacher5,Mr Teacher6
+4,Environmental ConIErvation Project,CE,4,IE,4,Ms Teacher7,Mr Teacher8
+5,Healthcare Infrastructure Upgrade,CE,3,EEE,5,Ms Teacher9,Mr Teacher10
+6,Community Empowerment Program,CE,2,BE,6,Ms Teacher1,Mr Teacher2
+7,Water Resource Management Initiative,CE,1,IE,4,Ms Teacher3,Mr Teacher4
+8,Social Entrepreneurship Incubator,CE,4,BE,5,Ms Teacher5,Mr Teacher6
+9,Technological Innovation Program,CE,2,IE,2,Ms Teacher7,Mr Teacher8
+10,Youth Development Scheme,EEE,3,IE,1,Ms Teacher9,Mr Teacher10
+11,Artisan Skill Enhancement Project,CE,1,IE,3,Ms Teacher1,Mr Teacher2
+12,Gender Equality Advocacy Program,CE,4,IE,2,Ms Teacher3,Mr Teacher4
+13,Rural Infrastructure Revitalization,CE,3,IE,2,Ms Teacher5,Mr Teacher6
+14,Disaster Preparedness Initiative,EEE,4,IE,4,Ms Teacher7,Mr Teacher8
+15,Public Transportation Upgrade,CE,1,BE,6,Ms Teacher9,Mr Teacher10
+16,Green Energy Promotion Project,CE,4,IE,3,Ms Teacher1,Mr Teacher2
+17,Disaster Preparednes2s Initiative,EEE,4,IE,4,Ms Teacher7,Mr Teacher8
+18,Public Transportatio2n Upgrade,CE,1,BE,6,Ms Teacher9,Mr Teacher10
+19,Green Energy Promotion2 Project,CE,4,BE,3,Ms Teacher1,Mr Teacher2
+20,Disaster Preparednes2s3 Initiative,EEE,4,IE,4,Ms Teacher7,Mr Teacher8
+21,Public Transportatio2n3 Upgrade,CE,1,BE,6,Ms Teacher9,Mr Teacher10
+22,Green Energy Promotion3 Project,IE,4,BE,3,Ms Teacher1,Mr Teacher2

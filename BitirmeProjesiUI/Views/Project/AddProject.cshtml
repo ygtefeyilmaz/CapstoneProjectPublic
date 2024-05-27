@@ -1,0 +1,129 @@
+﻿@model AddProjectModel
+@{
+    ViewData["Title"] = "AddProject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  
+<div class="card border-top border-0 border-4 border-primary">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <h3 class="mb-0 text-primary">Add Project</h3>
+        </div>
+        <hr>
+        @using (Html.BeginForm("AddProject", "Project", FormMethod.Post, new { @class = "row g-3", enctype = "multipart/form-data" }))
+        {
+            <div class="col-12">
+                <label for="Project_Name" class="form-label">Project Name</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Project_Name, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Project_Name, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label for="Department_ID" class="form-label">Department 1</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department_ID, (List<SelectListItem>)ViewBag.Department_Values_V, "---Set Department 1---", new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Department_ID, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label for="Department1_Capacity" class="form-label">Department 1 Capacity</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department1_Capacity, new List<SelectListItem>
+                {
+                new SelectListItem{Text="1", Value="1"},
+                new SelectListItem{Text="2", Value="2"},
+                new SelectListItem{Text="3", Value="3" ,Selected=true}}, "--Set Department 1 Capacity--", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="DepartmentID2" class="form-label">Department 2</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.DepartmentID2, (List<SelectListItem>)ViewBag.Department_Values_V, "---Set Department 2---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="Department2_Capacity" class="form-label">Department 2 Capacity</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department2_Capacity, new List<SelectListItem>
+                {
+                new SelectListItem{Text="1", Value="1"},
+                new SelectListItem{Text="2", Value="2"},
+                new SelectListItem{Text="3", Value="3" ,Selected=true}}, "--Set Department 2 Capacity--", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+
+            <div class="col-12">
+                <label for="DepartmentID3" class="form-label">Department 3</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.DepartmentID3, (List<SelectListItem>)ViewBag.Department_Values_V, "---Set Department 3---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="Department3_Capacity" class="form-label">Department 3 Capacity</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department3_Capacity, new List<SelectListItem>
+                {
+                new SelectListItem{Text="1", Value="1"},
+                new SelectListItem{Text="2", Value="2"},
+                new SelectListItem{Text="3", Value="3" ,Selected=true}}, "--Set Department 3 Capacity--", new { @class = "form-control" })
+                </div>
+            </div>  <div class="col-12">
+                <label for="DepartmentID4" class="form-label">Department 4</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.DepartmentID4, (List<SelectListItem>)ViewBag.Department_Values_V, "---Set Department 4---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="Department4_Capacity" class="form-label">Department 4 Capacity</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department4_Capacity, new List<SelectListItem>
+                {
+                new SelectListItem{Text="1", Value="1"},
+                new SelectListItem{Text="2", Value="2"},
+                new SelectListItem{Text="3", Value="3" ,Selected=true}}, "--Set Department 4 Capacity--", new { @class = "form-control" })
+                </div>
+            </div>
+
+             
+            <div class="col-12">
+                <label for="Instructor_ID" class="form-label">Instructor </label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Instructor_ID, (List<SelectListItem>)ViewBag.Instructor_Values_V, "---Set Instructor---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-12  mt-3">
+                <label for="Project_Description" class="form-label">Project Description</label>
+                <div class="input-group">
+                    @Html.TextAreaFor(x => x.Project_Description, new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="col-12  mt-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "true" })
+                    <label class="form-check-label" for="gridCheck2">Active/Passive</label>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="ms-auto">
+                <a href="/Project/Index" class="btn btn-white btn-sm">
+                    <i class="bx bx-comment-minus"></i>Cancel
+                </a>
+                <button asp-controller="Project" asp-action="AddProject" type="submit" class="btn btn-primary btn-sm"><i class="bx bx-save"></i>Save</button>
+            </div>
+        }
+    </div>
+</div>
+
+

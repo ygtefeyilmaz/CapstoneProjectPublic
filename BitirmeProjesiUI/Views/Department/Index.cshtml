@@ -1,0 +1,70 @@
+﻿﻿ @using EntityLayer.Concrete
+ @model List<Department>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Department List</h5>
+                <div class="ibox-tools">
+                    <a href="/Department/AddDepartment" class="btn btn-primary btn-sm"><i class='bx bx-edit'></i>Add Department</a>
+                </div>
+            </div>
+            <div class="ibox-content"> 
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Actions</th>
+                            <th>Department Name</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateDepartment", "Department")/@item.Department_ID";' title="Update" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                        <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("DeleteDepartment", "Department")/@item.Department_ID";' title="Delete" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="fa fa-trash"></i></button>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <button disabled="disabled" class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateDepartment", "Department")/@item.Department_ID";' title="Update" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                        <button disabled="disabled" class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("DeleteDepartment", "Department")/@item.Department_ID";' title="Delete" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="fa fa-trash"></i></button>
+                                    }
+
+                                </td>
+                                <td>@item.Department_Name</td>
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <span class="label label-primary">Active</span>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <span class="label label-danger">Passive</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Actions</th>
+                            <th>Department Name</th>
+                            <th>Status</th>
+                        </tr> 
+                    </tfoot> 
+                </table> 
+            </div>
+        </div>
+    </div> 
+</div>

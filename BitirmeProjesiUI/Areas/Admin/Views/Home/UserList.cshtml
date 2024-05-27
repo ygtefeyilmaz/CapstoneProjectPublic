@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<AdminModel.UserViewModel>
+<h1>User List</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          @*   <th>İşlemler</th> *@
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email Address</th>
+            <th>Status</th> 
+            <th>Role Operations</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               @*  <td>
+                    <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UserEdit", "Member")/@item.Id";' title="Update Registration" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                </td> *@
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+             
+                <td>
+                    @if (@item.IsActive == true)
+                    {
+                        <span class="label label-primary">Active</span>
+                    }
+                    @if (@item.IsActive == false)
+                    {
+                        <span class="label label-danger">Passive</span>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-primary  btn-outline" asp-controller="Roles" asp-action="AssignRoleToUser" asp-route-id="@item.Id">Assign Role</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

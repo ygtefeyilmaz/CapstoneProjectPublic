@@ -1,0 +1,101 @@
+﻿﻿ @using EntityLayer.Concrete
+ @model List<Team>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+<div class="row">
+    <div class="col-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Team List</h5>
+                <div class="ibox-tools">
+                    <a href="/Team/AddTeam" class="btn btn-primary btn-sm"><i class='bx bx-edit'></i>Add Team</a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Actions</th>
+                            <th>Team Name</th>
+                            <th>Assigned Project</th>
+                            <th>Department</th>
+                            <th>Team Capacity</th>
+                            <th>Team Description</th> 
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateTeam", "Team")/@item.Team_ID";' title="Update" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                        <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("DeleteTeam", "Team")/@item.Team_ID";' title="Delete" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="fa fa-trash"></i></button>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <button disabled="disabled" class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateTeam", "Team")/@item.Team_ID";' title="Update" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                        <button disabled="disabled" class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("DeleteTeam", "Team")/@item.Team_ID";' title="Delete" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="fa fa-trash"></i></button>
+                                    }
+
+                                </td>
+                                <td>@item.Team_Name</td> 
+                                @if (item.AssignedProjectID != 0)
+                                {
+                                    <td>@item.AssignedProjectID</td>
+                                }
+                                @if (item.AssignedProjectID == 0)
+                                {
+                                    <td>Not Assigned </td>
+                                }
+                                <td>@item.Department_ID</td>
+                                <td>@item.Team_Capacity</td>
+
+                                <td>
+                                    @if (item.Team_Description != null && item.Team_Description.Length > 50)
+                                    {
+                                        @item.Team_Description.Substring(0, item.Team_Description.Substring(0, 50).LastIndexOf(" "))
+                                    }
+                                    else
+                                    {
+                                        @item.Team_Description
+                                    }
+                                    ...
+                                </td>
+
+
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <span class="label label-primary">Active</span>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <span class="label label-danger">Passive</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Actions</th>
+                            <th>Team Name</th>
+                            <th>Assigned Project</th>
+                            <th>Department</th>
+                            <th>Team Capacity</th>
+                            <th>Team Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

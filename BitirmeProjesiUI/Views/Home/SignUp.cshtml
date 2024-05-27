@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "SignUp";
+}
+@model SignUpViewModel
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+  
+ 
+<div class="card border-top border-0 border-4 border-primary">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <h3 class="mb-0 text-primary">Add User</h3>
+        </div>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-info" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+
+        <div asp-validation-summary=ModelOnly class="alert alert-danger" role="alert">
+        </div>
+
+        <hr> 
+            @using (Html.BeginForm("SignUp", "Home", FormMethod.Post, new { @class = "row g-3", enctype = "multipart/form-data" }))
+            {
+            <div class="col-12">
+                <label for="UserName" class="form-label">Username</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.UserName, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label for="UserName" class="form-label">First Name</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                </div>
+             </div>
+
+            <div class="col-12">
+                <label for="UserName" class="form-label">Surname</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.SurName, new { @class = "form-control" })
+                </div>
+             </div>
+
+
+                 <div class="col-12">
+                <label class="form-label">Department</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department_ID, (List<SelectListItem>)ViewBag.Department_Values_V, "---Set Department---", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="col-12">
+                <label for="Email" class="form-label">Email Address</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label for="Phone" class="form-label">Contact Number</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                </div>
+             </div>
+             
+            <div class="col-12">
+                <label for="Password" class="form-label">Password</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+            </div>
+            <div class="col-12">
+                <label for="PasswordConfirm" class="form-label">Repeat Password</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.PasswordConfirm, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.PasswordConfirm, null, new { @class = "text-danger" })
+            </div>
+
+
+            <div class="col-12  mt-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "true" })
+                    <label class="form-check-label" for="gridCheck2">Active/Passive</label>
+                </div>
+            </div>
+
+
+            <hr class="col-12">
+            <div class="ms-auto">
+                <a href="/Home/Index" class="btn btn-white btn-sm">
+                    <i class="bx bx-comment-minus"></i>Cancel
+                </a>
+                <button asp-controller="Home" asp-action="SignUp" type="submit" class="btn btn-primary btn-sm"><i class="bx bx-save"></i>Save</button>
+            </div>
+        }
+    </div>
+</div>
+
+

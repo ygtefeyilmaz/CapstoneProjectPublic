@@ -1,0 +1,11 @@
+Number of students assigned to P1=569 Percentage=57%
+Number of students assigned to P2=223 Percentage=22%
+Number of students assigned to P3=104 Percentage=10%
+Number of students assigned to P4=34 Percentage=3%
+Number of students assigned to P5=20 Percentage=2%
+Number of students assigned to P6=7 Percentage=0%
+Number of students assigned to P7=16 Percentage=1%
+Number of students assigned to P8=3 Percentage=0%
+Number of students assigned to P9=10 Percentage=1%
+Number of students assigned to P10=1 Percentage=0%
+Number of students assigned to non-preferred projects are=0 Percentage=0%

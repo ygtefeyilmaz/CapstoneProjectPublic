@@ -1,0 +1,61 @@
+﻿@model SignInViewModel
+
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = "~/Views/Shared/Login.cshtml";
+}
+ 
+
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-4 col-lg-5 col-md-7 mx-auto mt-5">
+            <div class=" radius-10">
+                <h1 class="logo-name">BAU</h1>
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <h4>User Login</h4>
+                        <p>Please enter your login credentials</p>
+                    </div>
+
+                    <div asp-validation-summary=ModelOnly class="alert alert-danger" role="alert">
+                    </div>
+                    <form asp-controller="Home" asp-action="SignIn" asp-route-returnUrl="@Context.Request.Query["returnURl"]" method="post">
+                        <div class="mb-3">
+                            <label for="Email" class="form-label" asp-for="Email"></label>
+                            <input class="form-control" asp-for="Email">
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password" class="form-label" asp-for="Password"></label>
+                            <input value="Abc123" type="password" class="form-control" asp-for="Password">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" asp-for="RememberMe">
+                                    <label class="form-check-label" for="RememberMe" asp-for="RememberMe"></label>
+                                </div>
+                            </div>
+                          @*   <div class="col-md-6 ">
+                                <a class="btn btn-outline-secondary btn-sm float-end" asp-controller="Home" asp-action="ForgetPassword">Forgot My Password</a>
+                            </div> *@
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

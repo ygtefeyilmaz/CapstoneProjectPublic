@@ -1,0 +1,50 @@
+﻿@model AddResultModel
+@{
+    ViewData["Title"] = "AddResult";
+}
+ 
+ 
+
+<div class="card border-top border-0 border-4 border-primary">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <h3 class="mb-0 text-primary">Add Result</h3>
+        </div>
+        <hr>
+        @using (Html.BeginForm("AddResult", "Result", FormMethod.Post, new { @class = "row g-3", enctype = "multipart/form-data" }))
+        { 
+            <div class="col-12">
+                <label for="Department_ID" class="form-label">Team</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Team_ID, (List<SelectListItem>)ViewBag.Team_Values_V, "---Select a Team---", new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Team_ID, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label for="Department_ID" class="form-label">Project</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Project_ID, (List<SelectListItem>)ViewBag.Project_Values_V, "---Select a Project---", new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Project_ID, null, new { @class = "text-danger" })
+            </div>
+           
+
+            <div class="col-12  mt-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "true" })
+                    <label class="form-check-label" for="gridCheck2">Active/Passive</label>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="ms-auto">
+                <a href="/Result/Index" class="btn btn-white btn-sm">
+                    <i class="bx bx-comment-minus"></i>Cancel
+                </a>
+                <button asp-controller="Result" asp-action="AddResult" type="submit" class="btn btn-primary btn-sm"><i class="bx bx-save"></i>Save</button>
+            </div>
+        }
+    </div>
+</div>
+
+

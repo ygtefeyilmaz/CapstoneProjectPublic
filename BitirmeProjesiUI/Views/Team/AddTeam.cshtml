@@ -1,0 +1,169 @@
+﻿@model AddTeamModel
+@{
+    ViewData["Title"] = "AddTeam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card border-top border-0 border-4 border-primary">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <div class="col-12">
+                <h3 class="mb-0 text-primary">Add Team</h3>
+            </div>
+           
+        </div>
+        <div class="col-12" style="text-align: center;">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-warning" role="alert">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+        </div>
+        <hr>
+        @using (Html.BeginForm("AddTeam", "Team", FormMethod.Post, new { @class = "row g-3", enctype = "multipart/form-data" }))
+        {
+            <div class="col-12">
+                <label for="Team_Name" class="form-label">Team Name</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Team_Name, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Team_Name, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">Department</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department_ID, (List<SelectListItem>)ViewBag.Department_Values_V, "---Set Department---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="Team_Capacity" class="form-label">Team Capacity</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Team_Capacity, new List<SelectListItem>
+                {
+                new SelectListItem{Text="1", Value="1"},
+                new SelectListItem{Text="2", Value="2"},
+                new SelectListItem{Text="3", Value="3" ,Selected=true}}, "--Set Team Capacity--", new { @class = "form-control" })
+
+
+                </div>
+            </div>
+            <div class="col-12  mt-3">
+                <label for="Project_Description" class="form-label">Team Description</label>
+                <div class="input-group">
+                    @Html.TextAreaFor(x => x.Team_Description, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <hr class="col-12">
+
+            <div class="col-4">
+                <label for="projectChoice1" class="form-label">Project 1</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice1, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice2" class="form-label">Project 2</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice2, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice3" class="form-label">Project 3</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice3, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice4" class="form-label">Project 4</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice4, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice5" class="form-label">Project 5</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice5, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice6" class="form-label">Project 6</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice6, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice7" class="form-label">Project 7</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice7, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice8" class="form-label">Project 8</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice8, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice9" class="form-label">Project 9</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice9, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+            <div class="col-4">
+                <label for="projectChoice10" class="form-label">Project 10</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.projectChoice10, (List<SelectListItem>)ViewBag.Project_Values_V, "---Choose Project---", new { @class = "form-control" })
+                </div> 
+            </div>
+
+
+            <hr class="col-12">
+
+
+            <div class="col-4">
+                <label for="studentID1" class="form-label">Student 1</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.studentID1, (List<SelectListItem>)ViewBag.GetAllStudent_Values_V, "---Choose Student---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="studentID2" class="form-label">Student 2</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.studentID2, (List<SelectListItem>)ViewBag.GetAllStudent_Values_V, "---Choose Student---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-4">
+                <label for="studentID3" class="form-label">Student 3</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.studentID3, (List<SelectListItem>)ViewBag.GetAllStudent_Values_V, "---Choose Student---", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+
+
+            <div class="col-12  mt-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "true" })
+                    <label class="form-check-label" for="gridCheck2">Active/Passive</label>
+                </div>
+            </div>
+            <hr class="col-12">
+            <div class="ms-auto">
+                <a href="/Team/Index" class="btn btn-white btn-sm">
+                    <i class="bx bx-comment-minus"></i>Cancel
+                </a>
+
+                <button asp-controller="Team" asp-action="AddTeam" type="submit" class="btn btn-primary btn-sm"><i class="bx bx-save"></i>Save</button>
+            </div>
+        }
+    </div>
+</div>
+

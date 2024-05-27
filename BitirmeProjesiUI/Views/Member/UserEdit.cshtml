@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewData["Title"] = "UserEdit";
+}
+
+@model UserEditViewModel
+@section Scripts
+    {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>Update User </h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-info" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning" role="alert">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+
+        <div asp-validation-summary=ModelOnly class="alert alert-danger" role="alert">
+        </div>
+
+
+        <form asp-controller="Member" asp-action="UserEdit" method="post" enctype="multipart/form-data">
+
+            <div class="row mb-3">
+                <label for="" class="col-md-4 col-form-label" asp-for="UserName"></label>
+                <div class="col-md-8">
+                    <input hidden asp-for="Id" class="form-control">
+                    <input asp-for="UserName" class="form-control">
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>
+            </div>
+             
+
+            <div class="row mb-3">
+                <label for="" class="col-md-4 col-form-label" asp-for="Name"></label>
+                <div class="col-md-8">
+
+                    <input asp-for="Name" class="form-control">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="" class="col-md-4 col-form-label" asp-for="SurName"></label>
+                <div class="col-md-8">
+
+                    <input asp-for="SurName" class="form-control">
+                    <span class="text-danger" asp-validation-for="SurName"></span>
+                </div>
+            </div>
+
+             
+            <div class="row mb-3">
+                <label for="PasswordConfirm" class="col-md-4 col-form-label" asp-for="Email"></label>
+                <div class="col-md-8">
+                    <input asp-for="Email" class="form-control">
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="PasswordConfirm" class="col-md-4 col-form-label" asp-for="Phone"></label>
+                <div class="col-md-8">
+                    <input asp-for="Phone" class="form-control">
+                    <span class="text-danger" asp-validation-for="Phone"></span>
+                </div>
+            </div>
+
+
+         
+
+         @* <div class="row mb-3">
+                <label for="PasswordConfirm" class="col-md-4 col-form-label" asp-for="BirthDate"></label>
+                <div class="col-md-8">
+                    <input asp-for="BirthDate" class="form-control">
+                    <span class="text-danger" asp-validation-for="BirthDate"></span>
+                </div>
+            </div> *@
+
+
+        @*     <div class="row mb-3">
+                <label for="PasswordConfirm" class="col-md-4 col-form-label" asp-for="City"></label>
+                <div class="col-md-8">
+                    <input asp-for="City" class="form-control">
+                    <span class="text-danger" asp-validation-for="City"></span>
+                </div>
+            </div> *@
+
+                @* 
+            <div class="row mb-3">
+                <label for="PasswordConfirm" class="col-md-4 col-form-label" asp-for="Gender"></label>
+                <div class="col-md-8">
+                   <select  class="form-control" asp-for="Gender" asp-items="ViewBag.genderList">
+                       <option value="">Cinsiyet seçiniz</option>
+
+
+                   </select>
+                    <span class="text-danger" asp-validation-for="Gender"></span>
+                </div>
+            </div> *@
+
+            @* 
+            <div class="row mb-3">
+                <label for="PasswordConfirm" class="col-md-4 col-form-label" asp-for="Picture"></label>
+                <div class="col-md-8">
+                   <input class="form-control" type="file" asp-for="Picture" />
+                    <span class="text-danger" asp-validation-for="Picture"></span>
+                </div>
+            </div> *@
+
+            <div class="col-12  mt-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "true" })
+                    <label class="form-check-label" for="gridCheck2">Active/Passive</label>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="row mb-3">
+                <div class="col-md-8 offset-md-4">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+

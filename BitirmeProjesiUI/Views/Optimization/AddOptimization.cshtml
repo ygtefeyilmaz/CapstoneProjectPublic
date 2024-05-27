@@ -1,0 +1,120 @@
+﻿@model AddOptimizationModel
+@{
+    ViewData["Title"] = "AddOptimization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+ 
+
+<div class="card border-top border-0 border-4 border-primary">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <h3 class="mb-0 text-primary">Add Optimization Ruleset</h3>
+        </div>
+        <hr>
+        @using (Html.BeginForm("AddOptimization", "Optimization", FormMethod.Post, new { @class = "row g-3", enctype = "multipart/form-data" }))
+        {
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P1</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P1_Weight, new { @class = "form-control" })
+                </div> 
+            </div>
+
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P2</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P2_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P3</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P3_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P4</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P4_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P5</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P5_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P6</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P6_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P7</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P7_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P8</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P8_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P9</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P9_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="Optimization_Name" class="form-label">P10</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.P10_Weight, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <hr class="col-12">
+
+            <div class="col-4">
+                <label for="Optimization_Name" class="form-label">G1</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.G1_Penalty, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-4">
+                <label for="Optimization_Name" class="form-label">G2</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.G2_Penalty, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-4">
+                <label for="Optimization_Name" class="form-label">G3</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.G3_Penalty, new { @class = "form-control" })
+                </div>
+            </div>
+
+             
+
+         @*    <div class="col-12  mt-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "true" })
+                    <label class="form-check-label" for="gridCheck2">Aktif/Pasif</label>
+                </div>
+            </div> *@
+            <hr class="col-12">
+            <div class="ms-auto">
+                <a href="/Optimization/Index" class="btn btn-white btn-sm">
+                    <i class="bx bx-comment-minus"></i>Cancel
+                </a>
+                <button asp-controller="Optimization" asp-action="AddOptimization" type="submit" class="btn btn-primary btn-sm"><i class="bx bx-save"></i>Save</button>
+            </div>
+        }
+    </div>
+</div>
+
+

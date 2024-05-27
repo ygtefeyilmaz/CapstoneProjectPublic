@@ -1,0 +1,111 @@
+﻿ @using EntityLayer.Concrete
+ @model List<Project>
+
+
+@{
+    ViewData["Title"] = "StudentIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} ﻿
+
+<div class="row">
+    <div class="col-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Project List</h5>
+              
+            </div>
+            <div class="ibox-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                                                        
+                            <th>Action</th>
+                            <th>Project Name</th>
+                            <th>Department 1</th>
+                            <th>Department 2</th>
+                            <th>Department 3</th>
+                            <th>Department 4</th>
+                            <th>Instructor</th>
+                            <th>Project Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td> 
+                                    <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateProjectDisabled", "Project")/@item.Project_ID";' title="Update" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-eye"></i></button>
+                                </td>
+                                <td>@item.Project_Name</td>
+                                <td>@item.Department.Department_Name</td>
+
+                                @if (item.DepartmentID2 != 0)
+                                {
+                                    <td>@item.DepartmentID2</td>
+                                }
+                                @if (item.DepartmentID2 == 0)
+                                {
+                                    <td> </td>
+                                }
+                                @if (item.DepartmentID3 != 0)
+                                {
+                                    <td>@item.DepartmentID3</td>
+                                }
+
+                                @if (item.DepartmentID3 == 0)
+                                {
+                                    <td> </td>
+                                }
+                                @if (item.DepartmentID4 != 0)
+                                {
+                                    <td>@item.DepartmentID4</td>
+                                }
+                                @if (item.DepartmentID4 == 0)
+                                {
+                                    <td> </td>
+                                }
+
+                                <td>@item.Instructor.Instructor_Name @item.Instructor.Instructor_Surname</td>
+                                <td>
+                                    @if (item.Project_Description != null && item.Project_Description.Length > 50)
+                                    {
+                                        @item.Project_Description.Substring(0, item.Project_Description.Substring(0, 50).LastIndexOf(" "))
+                                    }
+                                    else
+                                    {
+                                        @item.Project_Description
+                                    }
+                                    ...
+                                </td>
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <span class="label label-primary">Active</span>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <span class="label label-danger">Passive</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Action</th>
+                            <th>Project Name</th>
+                            <th>Department 1</th>
+                            <th>Department 2</th>
+                            <th>Department 3</th>
+                            <th>Department 4</th>
+                            <th>Instructor</th>
+                            <th>Project Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+﻿@using System.Security.Claims;
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"] - Bitirme Projesi</title>
+    @await Html.PartialAsync("~/Views/Shared/CssAndJS/_LayoutCSS.cshtml")
+    @await RenderSectionAsync("Css", required: false)
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            @if (User.Identity!.IsAuthenticated)
+                            {
+                                <img alt="image" class="rounded-circle" src="~/AdminTemplate/assets/img/profile_small.jpg" />
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <span class="block m-t-xs font-bold">@User.Identity.Name</span>
+                                    <span class="text-muted text-xs block">BAU <b class="caret"></b></span>
+                                </a>
+
+                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                    <li><a class="dropdown-item" asp-controller="Member" asp-action="Index">Profile</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Member" asp-action="PasswordChange">Change Password</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Member" asp-action="UserEdit">Update User</a></li>
+                                   @*  <li><a class="dropdown-item" asp-controller="Member" asp-action="Claims">Claims</a></li> *@
+                                    @if (User.HasClaim(x => x.Type == ClaimTypes.Role && x.Value == "AdminRole"))
+                                    {
+                                        @*    <li><a class="dropdown-item" asp-area="admin" asp-controller="Home" asp-action="Index">Admin</a></li> *@
+                                        <li> <a class="btn btn-outline-success" asp-controller="Home" asp-action="SignUp">Add User</a></li>
+                                        <li> <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Dashboard </a></li>
+                                    }
+
+                                    <li><a class="dropdown-item" asp-route-returnurl="/Home/SignIn" asp-controller="Member" asp-action="logout">Logout</a></li>
+                                </ul>
+                            }
+                            else
+
+                            {
+                                <a class="btn btn-sm btn-primary px-4 radius-30" style="color:black" asp-controller="Home" asp-action="SignIn">Sign in</a>
+                            }
+                        </div>
+                        <div class="logo-element">
+                            BAU
+                        </div>
+                    </li>
+
+
+
+
+                    @if (User.Identity!.IsAuthenticated)
+                    {
+                        @if (User.HasClaim(x => x.Type == ClaimTypes.Role && x.Value == "BasicRole"))
+                        { 
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Team" asp-action="StudentIndex"> <i class="fa fa-users"></i>Join a Team</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Team" asp-action="UpdateStudentProject"> <i class="fa fa-pie-chart"></i>Select Project</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Project" asp-action="StudentIndex"> <i class="fa fa-book"></i>Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Result" asp-action="StudentResultIndex"> <i class="fa fa-pie-chart"></i>Result</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim(x => x.Type == ClaimTypes.Role && x.Value == "AdminRole"))
+                        {
+                            <li>
+                                @* class="active" *@
+                                <a asp-controller="Home" asp-action="Index" ><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li class="active"><a asp-controller="Home" asp-action="Index">Home Page</a></li> 
+                                </ul>
+                            </li>
+
+
+
+                          
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Department" asp-action="Index"> <i class="fa fa-university"></i>Department List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Instructor" asp-action="Index"> <i class="fa fa-user-o"></i>Instructor List</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Project" asp-action="Index"> <i class="fa fa-book"></i>Project List</a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Home" asp-action="Index"><i class="fa fa-user-circle"></i> <span class="nav-label">Users</span> <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li class="active">  <a asp-area="Admin" asp-controller="Home" asp-action="UserList"> <i class="fa fa-pie-chart"></i>User List</a></li>
+                                    <li class="active">  <a asp-area="" asp-controller="Home" asp-action="SignUp"> <i class="fa fa-pie-chart"></i>Add User</a></li>
+                                </ul>
+                            </li>
+
+
+                            
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Team" asp-action="Index"> <i class="fa fa-users"></i>Team List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Result" asp-action="Index"> <i class="fa fa-pie-chart"></i>Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Optimization" asp-action="Index"> <i class="fa fa-dashboard (alias)"></i>Optimization Rulesets</a>
+                            </li>
+
+
+
+                          @*   <li class="nav-item">
+                                <a asp-area="" asp-controller="Team" asp-action="AddTestData"> <i class="fa fa-pie-chart"></i>Test Sayfası</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Project" asp-action="AddTestData"> <i class="fa fa-pie-chart"></i>Project Test Sayfası</a>
+                            </li> *@
+                        }
+
+                    }
+
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+
+            @RenderBody()
+
+            <div class="footer">
+                <div class="float-right">
+                    <strong>BAU</strong> Capstone Project &copy; @DateTime.Now.Year
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    @await Html.PartialAsync("~/Views/Shared/CssAndJS/_LayoutJS.cshtml")
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿   ﻿ @using EntityLayer.Concrete
+ @model List<Optimization>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Optimization Rulesets </h5>
+                <div class="ibox-tools">
+                    @if (ViewBag.Count <= 0)
+                    {
+                        <a href="/Optimization/AddOptimization" class="btn btn-primary btn-sm"><i class='bx bx-edit'></i>Add Optimization Ruleset</a>
+                    }
+
+                </div>
+            </div>
+            <div class="ibox-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Actions</th>
+                            <th>P1</th>
+                            <th>P2</th>
+                            <th>P3</th>
+                            <th>P4</th>
+                            <th>P5</th>
+                            <th>P6</th>
+                            <th>P7</th>
+                            <th>P8</th>
+                            <th>P9</th>
+                            <th>P10</th>
+
+                            <th>G1 Penalty</th>
+                            <th>G2 Penalty</th>
+                            <th>G3 Penalty</th>
+                            <th>Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateOptimization", "Optimization")/@item.Optimization_ID";' title="Update" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                     }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <button disabled="disabled" class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateOptimization", "Optimization")/@item.Optimization_ID";' title="Update" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                     }
+
+                                </td>
+                                <td>@item.P1_Weight</td>
+                                <td>@item.P2_Weight</td>
+                                <td>@item.P3_Weight</td>
+                                <td>@item.P4_Weight</td>
+                                <td>@item.P5_Weight</td>
+                                <td>@item.P6_Weight</td>
+                                <td>@item.P7_Weight</td>
+                                <td>@item.P8_Weight</td>
+                                <td>@item.P9_Weight</td>
+                                <td>@item.P10_Weight</td>
+                                <td>@item.G1_Penalty</td>
+                                <td>@item.G2_Penalty</td>
+                                <td>@item.G3_Penalty</td>
+
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <span class="label label-primary">Active</span>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <span class="label label-danger">Passive</span>
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Actions</th>
+                            <th>P1</th>
+                            <th>P2</th>
+                            <th>P3</th>
+                            <th>P4</th>
+                            <th>P5</th>
+                            <th>P6</th>
+                            <th>P7</th>
+                            <th>P8</th>
+                            <th>P9</th>
+                            <th>P10</th>
+
+                            <th>G1 Penalty</th>
+                            <th>G2 Penalty</th>
+                            <th>G3 Penalty</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

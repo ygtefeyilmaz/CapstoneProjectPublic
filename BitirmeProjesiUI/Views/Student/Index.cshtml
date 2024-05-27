@@ -1,0 +1,86 @@
+﻿﻿ @using EntityLayer.Concrete
+ @model List<Student>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+ 
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Öğrenci Listesi</h5>
+                <div class="ibox-tools">
+                    <a href="/Student/AddStudent" class="btn btn-primary btn-sm"><i class='bx bx-edit'></i>Yeni Kayıt</a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>İşlemler</th>
+                            <th>Öğrenci Adı/Soyadı</th>
+                            <th>Departman</th> 
+                            <th>Takım</th> 
+                            <th>Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateStudent", "Student")/@item.Student_ID";' title="Kaydı Güncelle" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                        <button class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("DeleteStudent", "Student")/@item.Student_ID";' title="Kaydı Sil" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="fa fa-trash"></i></button>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <button disabled="disabled" class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("UpdateStudent", "Student")/@item.Student_ID";' title="Kaydı Güncelle" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="fa fa-pencil"></i></button>
+                                        <button disabled="disabled" class="btn btn-white btn-sm" onclick='window.location = "@Url.Action("DeleteStudent", "Student")/@item.Student_ID";' title="Kaydı Sil" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="fa fa-trash"></i></button>
+                                    }
+
+                                </td>
+                                <td>@item.Student_Name @item.Student_SurName</td>
+                                <td>@item.Department_ID</td>
+                                @if (item.Team_ID != 0)
+                                {
+                                    <td>@item.Team_ID</td>
+                                }
+                                @if (item.Team_ID == 0)
+                                {
+                                    <td>Henüz Onaylanmadı </td>
+                                }
+                                 
+                                 
+                                <td>
+                                    @if (@item.IsActive == true)
+                                    {
+                                        <span class="label label-primary">Aktif</span>
+                                    }
+                                    @if (@item.IsActive == false)
+                                    {
+                                        <span class="label label-danger">Pasif</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>İşlemler</th>
+                            <th>Öğrenci Adı/Soyadı</th>
+                            <th>Departman</th>
+                            <th>Takım</th>
+                            <th>Durumu</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

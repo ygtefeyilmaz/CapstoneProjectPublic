@@ -1,0 +1,65 @@
+﻿@model AddStudentModel
+@{
+    ViewData["Title"] = "AddStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+
+ 
+
+<div class="card border-top border-0 border-4 border-primary">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <h3 class="mb-0 text-primary">Öğrenci Ekleme</h3>
+        </div>
+        <hr>
+        @using (Html.BeginForm("AddStudent", "Student", FormMethod.Post, new { @class = "row g-3", enctype = "multipart/form-data" }))
+        {
+            <div class="col-12">
+                <label for="Student_Name" class="form-label">Öğrenci Adı</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Student_Name, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Student_Name, null, new { @class = "text-danger" })
+            </div>
+            <div class="col-12">
+                <label for="Student_SurName" class="form-label">Öğrenci Soyadı</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(x => x.Student_SurName, new { @class = "form-control" })
+                </div> 
+            </div>
+
+            <div class="col-12">
+                <label for="Department_ID" class="form-label">Departman</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Department_ID, (List<SelectListItem>)ViewBag.Department_Values_V, "---Departman Seçiniz---", new { @class = "form-control" })
+                </div>
+            </div>
+            @* 
+            <div class="col-12">
+                <label for="Team_ID" class="form-label">Takım</label>
+                <div class="input-group">
+                    @Html.DropDownListFor(x => x.Team_ID, (List<SelectListItem>)ViewBag.Team_Values_V, "---Takım Seçiniz---", new { @class = "form-control" })
+                </div>
+            </div> *@
+ 
+
+            <div class="col-12  mt-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(x => x.IsActive, new { @checked = "true" })
+                    <label class="form-check-label" for="gridCheck2">Aktif/Pasif</label>
+                </div>
+            </div>
+            <hr class="col-12">
+            <div class="ms-auto">
+                <a href="/Student/Index" class="btn btn-white btn-sm">
+                    <i class="bx bx-comment-minus"></i>Vazgeç
+                </a>
+                <button asp-controller="Student" asp-action="AddStudent" type="submit" class="btn btn-primary btn-sm"><i class="bx bx-save"></i>Kaydet</button>
+            </div>
+        }
+    </div>
+</div>
+
+
